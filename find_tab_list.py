@@ -6,6 +6,8 @@ class FindTabListCommand(sublime_plugin.TextCommand):
 
     def run(self, edit):
         def on_done(index):
+            if index == -1:
+                return;
             window = sublime.active_window()
             tabs = window.views_in_group(window.active_group())
             window.focus_view(tabs[index])
